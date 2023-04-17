@@ -1,0 +1,252 @@
+<mujoco model="horcrux_v1">
+    <compiler angle="radian" meshdir="assets" texturedir="assets" autolimits="true"/>
+
+    <option cone="elliptic" impratio="100"/>
+
+    <default>
+        <default class="visual">
+            <geom group="2" type="mesh" contype="0" conaffinity="0"/>
+        </default>
+    
+        <default class="collision">
+            <geom group="3" type="mesh"/>
+        </default>
+    </default>
+
+    <asset>
+        <!-- head -->
+        <material name="dim_gray" specular="0.0" shininess="0.300000031" rgba="0.411765 0.411765 0.411765 1.000000"/>
+        <material name="firebrick_red" specular="1.0" shininess="1.0" rgba="0.698039 0.000000 0.000000 1.000000"/>
+        <material name="silver" specular="0.7372549999999999" shininess="1.0" rgba="0.745098 0.737255 0.729412 1.000000"/>
+        <material name="white_smoke" specular="1.0" shininess="1.0" rgba="0.960784 0.960784 0.960784 1.000000"/>
+        <material name="dark_gray" specular="0.269281" shininess="1.0" rgba="0.250980 0.282353 0.274510 1.000000"/>
+        <material name="dodger_blue" specular="1.0" shininess="1.0" rgba="0.188235 0.529412 0.890196 1.000000"/>
+        <mesh file="head_0.obj"/>
+        <mesh file="head_1.obj"/>
+        <mesh file="head_2.obj"/>
+        <mesh file="head_3.obj"/>
+        <mesh file="head_4.obj"/>
+
+        <!-- h-link -->
+        <material name="105,105,105" specular="0.0" shininess="0.300000031" rgba="0.411765 0.411765 0.411765 1.000000"/>
+        <material name="190,188,186" specular="0.7372549999999999" shininess="1.0" rgba="0.745098 0.737255 0.729412 1.000000"/>
+        <material name="245,245,245" specular="1.0" shininess="1.0" rgba="0.960784 0.960784 0.960784 1.000000"/>
+        <material name="48,135,227" specular="1.0" shininess="1.0" rgba="0.188235 0.529412 0.890196 1.000000"/>
+        <material name="72,71,61" specular="0.266667" shininess="1.0" rgba="0.282353 0.278431 0.239216 1.000000"/>
+        <mesh file="h-link_0.obj"/>
+        <mesh file="h-link_1.obj"/>
+        <mesh file="h-link_2.obj"/>
+        <mesh file="h-link_3.obj"/>
+        <mesh file="h-link_4.obj"/>
+
+        <!-- v-link -->
+        <mesh file="v-link_0.obj"/>
+        <mesh file="v-link_1.obj"/>
+        <mesh file="v-link_2.obj"/>
+        <mesh file="v-link_3.obj"/>
+    </asset>
+
+    <worldbody>
+        <body name="head">
+        <freejoint name="root"/>  
+        <geom mesh="head_0" material="silver" class="visual"/>
+        <geom mesh="head_1" material="firebrick_red" class="visual"/>
+        <geom mesh="head_2" material="white_smoke" class="visual"/>
+        <geom mesh="head_3" material="dim_gray" class="visual"/>
+        <geom mesh="head_4" material="dark_gray" class="visual"/>
+        <geom mesh="head_0" class="collision"/>
+        <geom mesh="head_1" class="collision"/>
+        <geom mesh="head_2" class="collision"/>
+        <geom mesh="head_3" class="collision"/>
+        <geom mesh="head_4" class="collision"/>
+
+        <body name="link1" pos="-0.0685 0 0">
+        <joint name="joint1" type="hinge" pos="0.0685 0 0" axis="0 1 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+        <geom mesh="h-link_0" material="245,245,245" class="visual"/>
+        <geom mesh="h-link_1" material="105,105,105" class="visual"/>
+        <geom mesh="h-link_2" material="48,135,227" class="visual"/>
+        <geom mesh="h-link_3" material="190,188,186" class="visual"/>
+        <geom mesh="h-link_4" material="72,71,61" class="visual"/>
+        <geom mesh="h-link_0" class="collision"/>
+        <geom mesh="h-link_1" class="collision"/>
+        <geom mesh="h-link_2" class="collision"/>
+        <geom mesh="h-link_3" class="collision"/>
+        <geom mesh="h-link_4" class="collision"/>
+        
+        <body name="link2" pos="-0.0685 0 0">
+        <joint name="joint2" type="hinge" pos="0.0685 0 0" axis="0 0 1" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+        <geom mesh="v-link_0" material="105,105,105" class="visual"/>
+        <geom mesh="v-link_1" material="245,245,245" class="visual"/>
+        <geom mesh="v-link_2" material="190,188,186" class="visual"/>
+        <geom mesh="v-link_3" material="72,71,61" class="visual"/>
+        <geom mesh="v-link_0" class="collision"/>
+        <geom mesh="v-link_1" class="collision"/>
+        <geom mesh="v-link_2" class="collision"/>
+        <geom mesh="v-link_3" class="collision"/>
+
+        <body name="link3" pos="-0.0685 0 0">
+        <joint name="joint3" type="hinge" pos="0.0685 0 0" axis="0 1 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+        <geom mesh="h-link_0" material="245,245,245" class="visual"/>
+        <geom mesh="h-link_1" material="105,105,105" class="visual"/>
+        <geom mesh="h-link_2" material="48,135,227" class="visual"/>
+        <geom mesh="h-link_3" material="190,188,186" class="visual"/>
+        <geom mesh="h-link_4" material="72,71,61" class="visual"/>
+        <geom mesh="h-link_0" class="collision"/>
+        <geom mesh="h-link_1" class="collision"/>
+        <geom mesh="h-link_2" class="collision"/>
+        <geom mesh="h-link_3" class="collision"/>
+        <geom mesh="h-link_4" class="collision"/>
+
+        <body name="link4" pos="-0.0685 0 0">
+        <joint name="joint4" type="hinge" pos="0.0685 0 0" axis="0 0 1" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+        <geom mesh="v-link_0" material="105,105,105" class="visual"/>
+        <geom mesh="v-link_1" material="245,245,245" class="visual"/>
+        <geom mesh="v-link_2" material="190,188,186" class="visual"/>
+        <geom mesh="v-link_3" material="72,71,61" class="visual"/>
+        <geom mesh="v-link_0" class="collision"/>
+        <geom mesh="v-link_1" class="collision"/>
+        <geom mesh="v-link_2" class="collision"/>
+        <geom mesh="v-link_3" class="collision"/>
+
+        <body name="link5" pos="-0.0685 0 0">
+        <joint name="joint5" type="hinge" pos="0.0685 0 0" axis="0 1 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+        <geom mesh="h-link_0" material="245,245,245" class="visual"/>
+        <geom mesh="h-link_1" material="105,105,105" class="visual"/>
+        <geom mesh="h-link_2" material="48,135,227" class="visual"/>
+        <geom mesh="h-link_3" material="190,188,186" class="visual"/>
+        <geom mesh="h-link_4" material="72,71,61" class="visual"/>
+        <geom mesh="h-link_0" class="collision"/>
+        <geom mesh="h-link_1" class="collision"/>
+        <geom mesh="h-link_2" class="collision"/>
+        <geom mesh="h-link_3" class="collision"/>
+        <geom mesh="h-link_4" class="collision"/>
+
+        <body name="link6" pos="-0.0685 0 0">
+        <joint name="joint6" type="hinge" pos="0.0685 0 0" axis="0 0 1" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+        <geom mesh="v-link_0" material="105,105,105" class="visual"/>
+        <geom mesh="v-link_1" material="245,245,245" class="visual"/>
+        <geom mesh="v-link_2" material="190,188,186" class="visual"/>
+        <geom mesh="v-link_3" material="72,71,61" class="visual"/>
+        <geom mesh="v-link_0" class="collision"/>
+        <geom mesh="v-link_1" class="collision"/>
+        <geom mesh="v-link_2" class="collision"/>
+        <geom mesh="v-link_3" class="collision"/>
+
+        <body name="link7" pos="-0.0685 0 0">
+        <joint name="joint7" type="hinge" pos="0.0685 0 0" axis="0 1 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+        <geom mesh="h-link_0" material="245,245,245" class="visual"/>
+        <geom mesh="h-link_1" material="105,105,105" class="visual"/>
+        <geom mesh="h-link_2" material="48,135,227" class="visual"/>
+        <geom mesh="h-link_3" material="190,188,186" class="visual"/>
+        <geom mesh="h-link_4" material="72,71,61" class="visual"/>
+        <geom mesh="h-link_0" class="collision"/>
+        <geom mesh="h-link_1" class="collision"/>
+        <geom mesh="h-link_2" class="collision"/>
+        <geom mesh="h-link_3" class="collision"/>
+        <geom mesh="h-link_4" class="collision"/>        
+
+        <body name="link8" pos="-0.0685 0 0">
+        <joint name="joint8" type="hinge" pos="0.0685 0 0" axis="0 0 1" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+        <geom mesh="v-link_0" material="105,105,105" class="visual"/>
+        <geom mesh="v-link_1" material="245,245,245" class="visual"/>
+        <geom mesh="v-link_2" material="190,188,186" class="visual"/>
+        <geom mesh="v-link_3" material="72,71,61" class="visual"/>
+        <geom mesh="v-link_0" class="collision"/>
+        <geom mesh="v-link_1" class="collision"/>
+        <geom mesh="v-link_2" class="collision"/>
+        <geom mesh="v-link_3" class="collision"/>
+
+        <body name="link9" pos="-0.0685 0 0">
+        <joint name="joint9" type="hinge" pos="0.0685 0 0" axis="0 1 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+        <geom mesh="h-link_0" material="245,245,245" class="visual"/>
+        <geom mesh="h-link_1" material="105,105,105" class="visual"/>
+        <geom mesh="h-link_2" material="48,135,227" class="visual"/>
+        <geom mesh="h-link_3" material="190,188,186" class="visual"/>
+        <geom mesh="h-link_4" material="72,71,61" class="visual"/>
+        <geom mesh="h-link_0" class="collision"/>
+        <geom mesh="h-link_1" class="collision"/>
+        <geom mesh="h-link_2" class="collision"/>
+        <geom mesh="h-link_3" class="collision"/>
+        <geom mesh="h-link_4" class="collision"/>
+
+        <body name="link10" pos="-0.0685 0 0">
+        <joint name="joint10" type="hinge" pos="0.0685 0 0" axis="0 0 1" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+        <geom mesh="v-link_0" material="105,105,105" class="visual"/>
+        <geom mesh="v-link_1" material="245,245,245" class="visual"/>
+        <geom mesh="v-link_2" material="190,188,186" class="visual"/>
+        <geom mesh="v-link_3" material="72,71,61" class="visual"/>
+        <geom mesh="v-link_0" class="collision"/>
+        <geom mesh="v-link_1" class="collision"/>
+        <geom mesh="v-link_2" class="collision"/>
+        <geom mesh="v-link_3" class="collision"/>
+
+        <body name="link11" pos="-0.0685 0 0">
+        <joint name="joint11" type="hinge" pos="0.0685 0 0" axis="0 1 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+        <geom mesh="h-link_0" material="245,245,245" class="visual"/>
+        <geom mesh="h-link_1" material="105,105,105" class="visual"/>
+        <geom mesh="h-link_2" material="48,135,227" class="visual"/>
+        <geom mesh="h-link_3" material="190,188,186" class="visual"/>
+        <geom mesh="h-link_4" material="72,71,61" class="visual"/>
+        <geom mesh="h-link_0" class="collision"/>
+        <geom mesh="h-link_1" class="collision"/>
+        <geom mesh="h-link_2" class="collision"/>
+        <geom mesh="h-link_3" class="collision"/>
+        <geom mesh="h-link_4" class="collision"/>
+
+        <body name="link12" pos="-0.0685 0 0">
+        <joint name="joint12" type="hinge" pos="0.0685 0 0" axis="0 0 1" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+        <geom mesh="v-link_0" material="105,105,105" class="visual"/>
+        <geom mesh="v-link_1" material="245,245,245" class="visual"/>
+        <geom mesh="v-link_2" material="190,188,186" class="visual"/>
+        <geom mesh="v-link_3" material="72,71,61" class="visual"/>
+        <geom mesh="v-link_0" class="collision"/>
+        <geom mesh="v-link_1" class="collision"/>
+        <geom mesh="v-link_2" class="collision"/>
+        <geom mesh="v-link_3" class="collision"/>
+
+        <body name="link13" pos="-0.0685 0 0">
+        <joint name="joint13" type="hinge" pos="0.0685 0 0" axis="0 1 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+        <geom mesh="h-link_0" material="245,245,245" class="visual"/>
+        <geom mesh="h-link_1" material="105,105,105" class="visual"/>
+        <geom mesh="h-link_2" material="48,135,227" class="visual"/>
+        <geom mesh="h-link_3" material="190,188,186" class="visual"/>
+        <geom mesh="h-link_4" material="72,71,61" class="visual"/>
+        <geom mesh="h-link_0" class="collision"/>
+        <geom mesh="h-link_1" class="collision"/>
+        <geom mesh="h-link_2" class="collision"/>
+        <geom mesh="h-link_3" class="collision"/>
+        <geom mesh="h-link_4" class="collision"/>
+
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>   
+        </body>
+        </body>
+        </body>
+    </worldbody>
+
+    <actuator>
+        <position name="servo_1" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint1" kp="70"/>
+        <position name="servo_2" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint2" kp="70"/>
+        <position name="servo_3" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint3" kp="70"/>
+        <position name="servo_4" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint4" kp="70"/>
+        <position name="servo_5" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint5" kp="70"/>
+        <position name="servo_6" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint6" kp="70"/>
+        <position name="servo_7" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint7" kp="70"/>
+        <position name="servo_8" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint8" kp="70"/>
+        <position name="servo_9" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint9" kp="70"/>
+        <position name="servo_10" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint10" kp="70"/>
+        <position name="servo_11" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint11" kp="70"/>
+        <position name="servo_12" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint12" kp="70"/>
+        <position name="servo_13" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint13" kp="70"/>
+    </actuator>
+
+</mujoco>
